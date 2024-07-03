@@ -205,7 +205,7 @@ function getRaidInfo()
 	for i=1,40 do
 		local name,_,subgroup,_,class = GetRaidRosterInfo(i);
 
-		if (class == "Rogue" or class == "Warrior") then
+		if (class == "Rogue" or class == "Warrior" or name == "Alnen" or name == "Carexi" or name == "Retshiki") then
 			if dotRes[subgroup][1][1] == "Empty" or dotRes[subgroup][1][1] == name then
 				dotRes[subgroup][1] = {name, class}
 			elseif dotRes[subgroup][5][1] == "Empty" or dotRes[subgroup][5][1] == name then
@@ -217,7 +217,7 @@ function getRaidInfo()
 			else
 				dotRes[subgroup][4] = {name, class}
 			end
-		elseif (class == "Mage" or class == "Warlock" or class == "Hunter") then
+		elseif (class == "Mage" or class == "Warlock" or class == "Hunter" or name == "Disstressful" or name == "Topdream" or name == "Frunzulita") then
 			if dotRes[subgroup][3][1] == "Empty" or dotRes[subgroup][3][1] == name then
 				dotRes[subgroup][3] = {name, class}
 			elseif dotRes[subgroup][4][1] == "Empty" or dotRes[subgroup][4][1] == name then
@@ -251,7 +251,7 @@ function fillGrid()
 	for i=1,8 do
 		for j=1,5 do
 			local x = ((i-1)*5)+j
-			newDot(_G["Dot_"..x], _G["Tooltip_"..x], _G["Texture_"..x], dotRes[i][j][1], strlower(dotRes[i][j][2]))
+			newDot(getglobal("Dot_"..x), getglobal("Tooltip_"..x), getglobal("Texture_"..x), dotRes[i][j][1], strlower(dotRes[i][j][2]))
 		end
 	end
 end
